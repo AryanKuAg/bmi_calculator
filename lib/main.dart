@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+
 import 'package:bmi_calculator/screens/input_page.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-void main() => runApp(BMICalculator());
+void main() {
+  InAppPurchaseConnection.enablePendingPurchases();
+  runApp(BMICalculator());
+}
 
 class BMICalculator extends StatelessWidget {
   @override

@@ -1,46 +1,21 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:bmi_calculator/components/myDonation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:share/share.dart';
+import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final String testID = 'gems_test';
-
 class MyDrawer extends StatefulWidget {
-  //iap plugin interface
   @override
   _MyDrawerState createState() => _MyDrawerState();
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  // InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
-  //
-  // bool _available = true;
-  //
-  // List<ProductDetails> _products = [];
-  //
-  // List<PurchaseDetails> _purchases = [];
-  //
-  // StreamSubscription _subscription;
-  //
-  // int _credits = 0;
-
-  @override
-  void initState() {
-    // _initialize();
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // _subscription.cancel();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -132,14 +107,11 @@ class _MyDrawerState extends State<MyDrawer> {
                   title: Text('Donate'),
                 ),
                 onTap: () async {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (ctx) => Column(
-                            children: [
-                              // for (var prod in _products)
-                              //   if (_hasPurchased(prod.id) != null) ...[];
-                            ],
-                          ));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => MyDonation(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -149,3 +121,4 @@ class _MyDrawerState extends State<MyDrawer> {
     );
   }
 }
+// keytool -genkey -v -keystore c:\Users\Aryan\key.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias key
